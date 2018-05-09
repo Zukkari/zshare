@@ -48,18 +48,18 @@ fun main(args: Array<String>) {
             get("/info", {
                 log.info("Serving endpoint 'info'")
                 this.context.respondText { "Future endpoint implementation" }
-                InfoHandler(this.context).handle()
+                InfoHandler(this.context, log).handle()
             })
 
             post("/files", {
                 log.info("Handling file upload at 'files'")
-                UploadHandler(this.context).handle()
+                UploadHandler(this.context, log).handle()
             })
 
             get("/files", {
                 log.info("Setting up a download for file at 'files'")
                 this.context.respondText { "Future endpoint implementation" }
-                DownloadHandler(this.context).handle()
+                DownloadHandler(this.context, log).handle()
             })
         }
     }.start(wait = true)
