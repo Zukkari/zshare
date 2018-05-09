@@ -20,6 +20,3 @@ zshare-client/cmake-build-debug
 zshare-client/zshare-client.iml
 .tmp/
 tomcat.8080/
-zshare-client/cmake-build-debug/CMakeFiles/3.10.2/CompilerIdC/tmp/
-zshare-client/cmake-build-debug/CMakeFiles/3.10.2/CompilerIdCXX/tmp/
-zshare-client/cmake-build-debug/CMakeFiles/CMakeTmp/

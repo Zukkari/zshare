@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/zshare_client.dir/main.cpp.o  -o zshare_client 

@@ -1,3 +1,0 @@
-/home/zukkari/git/zshare/zshare-client/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/zukkari/git/zshare/zshare-client/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/zukkari/git/zshare/zshare-client/cmake-build-debug/CMakeFiles/zshare_client.dir
