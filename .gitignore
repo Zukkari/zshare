@@ -1,14 +1,17 @@
-.gradle
-/build/
+zshare-server/.gradle
+zshare-server/build/
 
 # Ignore Gradle GUI config
-gradle-app.setting
+zshare-server/gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
+!zshare-server/gradle-wrapper.jar
 
 # Cache of project
-.gradletasknamecache
+zshare-server/.gradletasknamecache
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+.idea
+zshare-server/.idea
