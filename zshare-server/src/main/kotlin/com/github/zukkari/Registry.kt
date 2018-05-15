@@ -26,7 +26,9 @@ object Registry {
         }
     }
 
-    fun extract(key: String) = fileMap[key]
+    fun extract(key: String) = fileMap.remove(key)
+
+    fun peek(key: String) = fileMap[key]
 
     fun initialize(props: Properties) {
         (props[Keys.ADJECTIVES.value] as String).apply {

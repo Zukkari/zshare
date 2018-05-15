@@ -47,7 +47,6 @@ fun main(args: Array<String>) {
         routing {
             get("/info", {
                 log.info("Serving endpoint 'info'")
-                this.context.respondText { "Future endpoint implementation" }
                 InfoHandler(this.context, log).handle()
             })
 
@@ -58,7 +57,6 @@ fun main(args: Array<String>) {
 
             get("/files", {
                 log.info("Setting up a download for file at 'files'")
-                this.context.respondText { "Future endpoint implementation" }
                 DownloadHandler(this.context, log).handle()
             })
         }
