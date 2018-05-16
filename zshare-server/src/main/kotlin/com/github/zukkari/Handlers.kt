@@ -93,7 +93,9 @@ class InfoHandler(call: ApplicationCall, log: Logger) : Handler(call, log) {
         val key = call.parameters[Parameters.KEY.value] ?: ""
         if (key.isBlank()) {
             respond(HttpStatusCode.BadRequest, "Missing key")
+            return
         }
+
         log.info("Looking for item with key '$key'")
 
         val handle = Registry.peek(key)
@@ -114,13 +116,14 @@ class DownloadHandler(call: ApplicationCall, log: Logger) : Handler(call, log) {
         val key = call.parameters[Parameters.KEY.value]
         if (key == null) {
             respond(HttpStatusCode.BadRequest, "Missing key")
+            return
         }
 
-        val handle = Registry.extract(key!!)
+        val handle = Registry.extract(key)
         if (handle == null) {
             respond(HttpStatusCode.NoContent)
         } else {
-            call.response.header(io.ktor.http.HttpHeaders.ContentDisposition, "attachment; filename=\"${handle.fileName}\"")
+            call.response.header(io.ktor.http.HttpHeaders.ContentDisposition, handle.fileName)
             call.respondWrite(ContentType.Application.Json, HttpStatusCode.OK, {
                 this.write(String(handle.content, java.nio.charset.Charset.forName("UTF-8")))
             })
