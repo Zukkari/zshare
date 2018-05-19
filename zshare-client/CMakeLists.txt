@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.7)
-project(zshare_client)
+project(zshare_client VERSION 1.0 DESCRIPTION "Shared library for ZShare Application")
 
 if(NOT ${CMAKE_VERSION} LESS 3.2)
     set(CMAKE_CXX_STANDARD 11)
@@ -31,6 +31,30 @@ endif()
 
 add_subdirectory(opt)
 
-add_executable(zshare_client zshare_client.cpp include/ZShareClient.h include/ZInfo.h src/ZInfo.cpp src/ZFileUpload.cpp include/ZFileUpload.h src/ZFileContent.cpp include/ZFileContent.h src/ZShareClient.cpp)
+add_library(zshare_client
+        zshare_client.cpp
+        src/ZInfo.cpp
+        src/ZFileUpload.cpp
+        src/ZFileContent.cpp
+        src/ZShareClient.cpp)
+
+set_target_properties(zshare_client PROPERTIES SOVERSION 1)
+set_target_properties(zshare_client PROPERTIES PUBLIC_HEADER include/ZShareClient.h include/ZFileContent.h include/ZInfo.h include/ZFileUpload.h)
+
+target_include_directories(zshare_client PUBLIC include)
+target_include_directories(zshare-client PUBLIC src)
+
+include(GNUInstallDirs)
+
 target_link_libraries(zshare_client ${CPR_LIBRARIES})
 include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS})
+
+
+configure_file(zshare_client.pc.in zshare_client.pc @ONLY)
+
+install(FILES ${CMAKE_BINARY_DIR}/zshare_client.pc
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
+
+install(TARGETS zshare_client
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
