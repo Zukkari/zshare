@@ -127,7 +127,6 @@ class DownloadHandler(call: ApplicationCall, log: Logger) : Handler(call, log) {
             call.respondWrite(ContentType.Application.Json, HttpStatusCode.OK, {
                 this.write(String(handle.content, java.nio.charset.Charset.forName("UTF-8")))
             })
-            log.debug("Response written with $handle")
         }
     }
 }

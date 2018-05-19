@@ -9,8 +9,12 @@
 int main(int argc, char** argv) {
     ZShareClient client;
 
-    std::string key = "6-scruffy-actor";
+    string fPath = "/home/zukkari/Downloads/testFile.json";
+    string fName = "resultFile.json";
 
-    std::cout << client.fileInfo(key) << std::endl;
-    std::cout << client.fileContent(key) << std::endl;
+    auto uploadRes = client.upload(fPath, fName);
+    string access_code = uploadRes.getAccess_code();
+
+    std::cout << client.fileInfo(access_code) << std::endl;
+    std::cout << client.fileContent(access_code) << std::endl;
 }

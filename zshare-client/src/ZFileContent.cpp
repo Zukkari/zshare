@@ -4,18 +4,20 @@
 
 #include "../include/ZFileContent.h"
 
-const std::string &ZFileContent::getFileName() const {
+using namespace std;
+
+const string &ZFileContent::getFileName() const {
     return fileName;
 }
 
-void ZFileContent::setFileName(const std::string &fileName) {
+void ZFileContent::setFileName(const string &fileName) {
     ZFileContent::fileName = fileName;
 }
 
-const std::string &ZFileContent::getContent() const {
+const string &ZFileContent::getContent() const {
     return content;
 }
 
-void ZFileContent::setContent(const std::string &content) {
+void ZFileContent::setContent(const string &content) {
     ZFileContent::content = content;
 }
