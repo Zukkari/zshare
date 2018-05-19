@@ -21,7 +21,6 @@ zshare-client/zshare-client.iml
 .tmp/
 tomcat.8080/
 
-zshare-client/opt/
 zshare-client/pystitus
 zshare-client/README.md
 zshare-client/.travis.yml
