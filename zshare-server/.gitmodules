@@ -1,0 +1,6 @@
+[submodule "opt/cpr"]
+	path = zshare-client/opt/cpr
+	url = git://github.com/whoshuu/cpr.git
+[submodule "opt/json"]
+	path = zshare-client/opt/json
+	url = git://github.com/nlohmann/json.git
