@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.7)
 project(zshare_client DESCRIPTION "Shared library for ZShare Application")
 
+
 if(NOT ${CMAKE_VERSION} LESS 3.2)
     set(CMAKE_CXX_STANDARD 11)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -13,16 +14,16 @@ else()
     if(COMPILER_SUPPORTS_CXX11)
         message(STATUS "C++11 is supported.")
         if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++ -fPIC")
         else()
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -fPIC")
         endif()
     elseif(COMPILER_SUPPORTS_CXX0X)
         message(STATUS "C++0x is supported.")
         if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -stdlib=libc++")
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -stdlib=libc++ -fPIC")
         else()
-            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+            set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -fPIC")
         endif()
     else()
         message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
@@ -38,6 +39,9 @@ add_library(zshare_client
         src/ZFileContent.cpp
         src/ZShareClient.cpp)
 
+target_link_libraries(zshare_client ${CPR_LIBRARIES})
+include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS})
+
 set_target_properties(zshare_client PROPERTIES SOVERSION 1)
 set_target_properties(zshare_client PROPERTIES PUBLIC_HEADER include/ZShareClient.h)
 
@@ -45,10 +49,6 @@ target_include_directories(zshare_client PUBLIC include/)
 target_include_directories(zshare_client PUBLIC opt)
 
 include(GNUInstallDirs)
-
-target_link_libraries(zshare_client ${CPR_LIBRARIES})
-include_directories(${CPR_INCLUDE_DIRS} ${JSON_INCLUDE_DIRS})
-
 
 configure_file(zshare_client.pc.in zshare_client.pc @ONLY)
 
