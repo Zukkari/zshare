@@ -26,5 +26,4 @@ zshare-client/pystitus
 zshare-client/README.md
 zshare-client/.travis.yml
 zshare-client/.gitignore
-zshare-client/.gitmodules
 zshare-client/appveyor.yml
