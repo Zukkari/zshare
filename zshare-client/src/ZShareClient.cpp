@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include <cpr/cpr.h>
+#include <json.hpp>
 #include "../include/ZInfo.h"
 #include "../include/ZShareClient.h"
 
