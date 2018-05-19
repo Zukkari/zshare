@@ -42,6 +42,7 @@ set_target_properties(zshare_client PROPERTIES SOVERSION 1)
 set_target_properties(zshare_client PROPERTIES PUBLIC_HEADER include/ZShareClient.h)
 
 target_include_directories(zshare_client PUBLIC include/)
+target_include_directories(zshare_client PUBLIC opt)
 
 include(GNUInstallDirs)
 

@@ -1,0 +1,12 @@
+prefix=/usr/local
+exec_prefix=/usr/local
+libdir=${exec_prefix}/lib64
+includedir=${prefix}/include
+
+Name: @ZShare Client@
+Description: @Client library wrapper for ZShare@
+Version: 
+
+Requires:
+Libs: -L${libdir} -lzshare_client
+Cflags: -I${includedir}
