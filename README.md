@@ -23,10 +23,12 @@ Server side of the application is built using [Gradle](https://gradle.org/).
 Client side solution is built using [CMake](https://cmake.org/).
 
 1. Clone the repository and initialize submodules:
-```git clone —recurse-submodules -j8 git@github.com:Zukkari/zshare.git```
+
+    ```git clone —recurse-submodules -j8 git@github.com:Zukkari/zshare.git```
 
 1. Move into the project folder:
-```cd zshare```
+
+    ```cd zshare```
 
 1. Build the server:
 
