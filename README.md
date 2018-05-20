@@ -19,5 +19,69 @@ The application constists of two parts:
     1. Qt GUI
 
 ## Building
-1. Server side of the application is build using [Gradle](https://gradle.org/)
-1. Client side solution is build using [CMake](https://cmake.org/)
+Server side of the application is built using [Gradle](https://gradle.org/).
+
+Client side solution is built using [CMake](https://cmake.org/).
+
+1. Clone the repository and initialize submodules:
+```git clone —recurse-submodules -j8 git@github.com:Zukkari/zshare.git```
+
+1. Move into the project folder:
+```cd zshare```
+
+1. Build the server:
+
+      1. Move into the server folder: 
+      
+            ```cd zshare-server```
+        
+       
+      1. Build the ```jar```:
+      
+            ```./gradlew jar```
+        
+      1. Server ```jar``` file is now located in ```{pathToRepo}/zshare-sever/build/libs/zshare-server-1.0-SNAPSHOT.jar```
+      and can be started by running ```java -jar {pathToJar}```. This will start the server on port 8080.
+
+1. Build the client:
+
+    1. Move into the client folder: 
+    
+        ```cd zshare-client```
+        
+    1. Execute CMake:
+    
+         ```cmake .```
+        
+    1. Run ```Makefile```:
+    
+        ```make```
+        
+    1. Binary executable will be created with the name ```zshr```.
+
+## Using the program
+
+Program has 2 main functions:
+
+1. Sending the file:
+
+```./zshr send <path to file>```
+
+Optionally file name for the receiver can be used:
+```./zshr send <path to file> <new file name>```
+
+After sending the file the program will notify you with the code:
+```
+Your file '<example file name>' has been successfully uploaded.
+The code is => <code>
+```
+Now the ```<code>``` can be used to share the file.
+
+
+1. Receiveing the file:
+
+```./zshr receive <code>```
+
+Where code is the code generated in the first step.
+You will be then prompted to save the file or to skip saving the file.
+Note that file will only be saved if you accept it, otherwise it will remain on the server.
