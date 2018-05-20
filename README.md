@@ -16,7 +16,6 @@ The application constists of two parts:
 1. Server, written in Kotlin using [Ktor](https://github.com/ktorio/ktor) framework.
 1. Client side solution using C++:
     1. CLI
-    1. Qt GUI
 
 ## Building
 Server side of the application is built using [Gradle](https://gradle.org/).
