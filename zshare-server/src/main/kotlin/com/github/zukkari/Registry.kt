@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.BufferedReader
 import java.io.File
 import java.io.FileReader
+import java.io.InputStreamReader
 import java.util.Arrays
 import java.util.Properties
 import java.util.Random
@@ -32,13 +33,13 @@ object Registry {
 
     fun initialize(props: Properties) {
         (props[Keys.ADJECTIVES.value] as String).apply {
-            BufferedReader(FileReader(File(Keys::class.java.getResource(this).toURI()))).use {
+            BufferedReader(InputStreamReader(Keys::class.java.getResourceAsStream(this))).use {
                 adjectives = it.readLines()
             }
         }
 
         (props[Keys.NOUNS.value] as String).apply {
-            BufferedReader(FileReader(File(Keys::class.java.getResource(this).toURI()))).use {
+            BufferedReader(InputStreamReader(Keys::class.java.getResourceAsStream(this))).use {
                 nouns = it.readLines()
             }
         }
